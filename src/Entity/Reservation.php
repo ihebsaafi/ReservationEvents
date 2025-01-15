@@ -28,9 +28,11 @@ class Reservation
     #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'reservation')]
     private Collection $tickets;
 
-    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    #[ORM\ManyToOne(inversedBy: 'reservation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?Client $client = null;
+
+
 
     public function __construct()
     {
@@ -96,15 +98,19 @@ class Reservation
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getClient(): ?client
     {
-        return $this->user;
+        return $this->client;
     }
 
-    public function setUser(?User $user): static
+    public function setClient(?client $client): static
     {
-        $this->user = $user;
+        $this->client = $client;
 
         return $this;
     }
+
+
+
+
 }

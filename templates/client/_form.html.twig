@@ -1,0 +1,87 @@
+{% extends "/home/index.html.twig" %}
+
+{% block body %}
+    <div class="navbar-header">
+        {% block header %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+    <div class="vertical-menu">
+        {% block sidebar %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+    <div class="container mt-5">
+        <div class="main-content">
+            <h2 class="text-center mb-4">Client Form</h2>
+
+            {{ form_start(form) }}
+
+            <!-- Name Field -->
+            <div class="row mb-3">
+                <label for="{{ form.firstName.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.firstName) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.firstName, { 'attr': { 'class': 'form-control', 'id': form.firstName.vars.id } }) }}
+                </div>
+            </div>
+
+            <!-- Date Event Field -->
+            <div class="row mb-3">
+                <label for="{{ form.lastName.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.lastName) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.lastName, { 'attr': { 'class': 'form-control', 'id': form.lastName.vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.email.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.email) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.email, { 'attr': { 'class': 'form-control', 'id': form.email.vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.dateDeNaissance .vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.dateDeNaissance ) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.dateDeNaissance , { 'attr': { 'class': 'form-control', 'id': form.dateDeNaissance .vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.pwd .vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.pwd ) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.pwd , { 'attr': { 'class': 'form-control', 'id': form.pwd .vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.phone .vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.phone ) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.phone , { 'attr': { 'class': 'form-control', 'id': form.phone .vars.id } }) }}
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="row mb-3">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary btn-lg">
+                        {{ button_label|default('Save') }}
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+

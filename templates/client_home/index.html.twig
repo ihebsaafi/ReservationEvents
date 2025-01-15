@@ -1,0 +1,63 @@
+{% extends "/home/index.html.twig" %}
+
+{% block title %}Liste des Événements Disponibles{% endblock %}
+
+{% block body %}
+    <div class="navbar-header">
+        {% block header %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+        <div class="container mt-5">
+            <h1 class="text-center mb-4 fw-bold">Les Événements Disponibles</h1>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped mb-0">
+                            <thead class="table-light">
+                            <tr class="text-center">
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Lieu</th>
+                                <th>Places Disponibles</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for event in events %}
+                                <tr class="text-center">
+                                    <td>{{ event.id }}</td>
+                                    <td>{{ event.name }}</td>
+                                    <td>{{ event.dateEvent ? event.dateEvent|date('Y-m-d') : 'Non spécifiée' }}</td>
+                                    <td>{{ event.description }}</td>
+                                    <td>{{ event.lieu }}</td>
+                                    <td>{{ event.nbrPlace }}</td>
+                                    <td>
+                                        {% if event.nbrPlace > 0 %}
+                                            <a class="btn btn-success btn-sm" role="button">
+                                                Réserver
+                                            </a>
+                                        {% else %}
+                                            <span class="badge bg-danger">Complet</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">Aucun événement disponible pour le moment.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,11 +1,22 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Event index{% endblock %}
+{% extends "/home/index.html.twig" %}
 
 {% block body %}
-    <h1>Event index</h1>
 
-    <table class="table">
+<div class="navbar-header">
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+<div class="vertical-menu">
+    {% block sidebar %}
+        {{ parent() }}
+    {% endblock %}
+</div>
+    <div class="main-content">
+    <h1>Event Liste</h1>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table mb-0">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,8 +38,7 @@
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.nbrPlace }}</td>
                 <td>
-                    <a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+                    <a class="btn btn-primary"  role="button" href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,7 +47,11 @@
             </tr>
         {% endfor %}
         </tbody>
+
     </table>
+                </div>
+            </div>
+    </div>
 
     <a href="{{ path('app_event_new') }}">Create new</a>
 {% endblock %}

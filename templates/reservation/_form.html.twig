@@ -1,4 +1,64 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends "/home/index.html.twig" %}
+
+{% block body %}
+    <div class="navbar-header">
+        {% block header %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+    <div class="vertical-menu">
+        {% block sidebar %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+    <div class="container mt-5">
+        <div class="main-content">
+            <h2 class="text-center mb-4">Reservation Form</h2>
+
+            {{ form_start(form) }}
+
+            <!-- Name Field -->
+            <div class="row mb-3">
+                <label for="{{ form.dateReservation.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.dateReservation) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.dateReservation, { 'attr': { 'class': 'form-control', 'id': form.dateReservation.vars.id } }) }}
+                </div>
+            </div>
+
+            <!-- Date Event Field -->
+            <div class="row mb-3">
+                <label for="{{ form.nbrTickets.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.nbrTickets) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.nbrTickets, { 'attr': { 'class': 'form-control', 'id': form.nbrTickets.vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.client.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.client) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.client, { 'attr': { 'class': 'form-control', 'id': form.client.vars.id } }) }}
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row mb-3">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary btn-lg">
+                        {{ button_label|default('Save') }}
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+

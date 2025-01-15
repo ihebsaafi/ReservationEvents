@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Client;
 use App\Entity\Reservation;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,11 +19,12 @@ class ReservationType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('nbrTickets')
-            ->add('user', EntityType::class, [
-                'class' => User::class,
+            ->add('client', EntityType::class, [
+                'class' => Client::class,
                 'choice_label' => 'id',
             ])
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,4 +1,72 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends "/home/index.html.twig" %}
+
+{% block body %}
+    <div class="navbar-header">
+        {% block header %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+    <div class="vertical-menu">
+        {% block sidebar %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+
+    <div class="container mt-5">
+        <div class="main-content">
+            <h2 class="text-center mb-4">Tickets Form</h2>
+
+            {{ form_start(form) }}
+
+            <!-- Name Field -->
+            <div class="row mb-3">
+                <label for="{{ form.dateExpiration.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.dateExpiration) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.dateExpiration, { 'attr': { 'class': 'form-control', 'id': form.dateExpiration.vars.id } }) }}
+                </div>
+            </div>
+
+            <!-- Date Event Field -->
+            <div class="row mb-3">
+                <label for="{{ form.payment.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.payment) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.payment, { 'attr': { 'class': 'form-control', 'id': form.payment.vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.reservation.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.reservation) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.reservation, { 'attr': { 'class': 'form-control', 'id': form.reservation.vars.id } }) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="{{ form.event.vars.id }}" class="col-sm-12 col-md-2 col-form-label">
+                    {{ form_label(form.event) }}
+                </label>
+                <div class="col-sm-12 col-md-10">
+                    {{ form_widget(form.event, { 'attr': { 'class': 'form-control', 'id': form.event.vars.id } }) }}
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="row mb-3">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary btn-lg">
+                        {{ button_label|default('Save') }}
+                    </button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+
